@@ -1,30 +1,28 @@
-// function editNav() {
-//   var x = document.getElementById("myTopnav");
-//   if (x.className === "topnav") {
-//     x.className += " responsive";
-//   } else {
-//     x.className = "topnav";
-//   }
-// }
+function editNav() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
 
-// DOM Elements
+// DOM Elements - form
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalCloseBtn = document.querySelector(".close");
 const form = document.getElementById("form");
 
-const successPopupClose = document.querySelector(".close-success")
-const errorMsg = document.querySelectorAll(".error");
-const successIcon = document.querySelectorAll(".success-icon");
-const failureIcon = document.querySelectorAll(".failure-icon");
-let successMsg = document.getElementById("success-popup");
+// DOM Elements - validation message
+const successMsg = document.getElementById("success-popup");
+const successPopupClose = document.querySelector(".close-success");
 
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-//close modal event
+// close modal event
 modalCloseBtn.addEventListener("click", closeModal);
 
 // launch modal form
@@ -37,122 +35,151 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-// close modal function when clicking outside form
+// close modal function when clicking outside the form
 window.addEventListener("click", (e) => {
   if(e.target === modalbg){
     modalbg.style.display = "none";
   }
 })
 
-//close success event
+// close success event
 successPopupClose.addEventListener("click", closeSuccess);
 
-//close success message popup
+// close success message popup
 function closeSuccess() {
   successMsg.style.display = "none";
 }
 
 
-// Get all the form elements
-let firstName = document.getElementById("first");
-let lastName = document.getElementById("last");
-let email = document.getElementById("email");
-let birthdate = document.getElementById("birthdate");
-let checkbox1 = document.getElementById("checkbox1");
-let quantity = document.getElementById("quantity")
-let city = document.reserve.location;
-
-let isFormValid = false;
+// all the form elements
+const first = document.getElementById("first");
+const last = document.getElementById("last");
+const email = document.getElementById("email");
+const birthdate = document.getElementById("birthdate");
+const checkbox1 = document.getElementById("checkbox1");
+const quantity = document.getElementById("quantity")
 
 
+// eveny submit form
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-
-  if(isFormValid) {
+  checkFirstName();
+  checkLastName();
+  checkEmail();
+  checkBirthdate();
+  checkQuantity();
+  checkLocation();
+  checkboxValidation();
+  if(
+  checkFirstName() && checkLastName() && checkEmail() && checkBirthdate() && checkQuantity() && checkLocation() && checkboxValidation()
+  ) {
     modalbg.remove();
     successMsg.style.display = 'block';
   }
-
-  // Validate first name
-  if(firstName.value.trim() === ''){
-    errorMsg[0].innerHTML = 'Veuillez entrer au moins 2 caractères';
-    failureIcon[0].style.opacity = "1";
-    isFormValid = false;
-  } else {
-    errorMsg[0].innerHTML = '';
-    failureIcon[0].style.opacity = "0";
-    successIcon[0].style.opacity = "1";
-    isFormValid = true;
-  }
-
-  // Validate last name
-  if(lastName.value.trim() === ''){
-    errorMsg[1].innerHTML = 'Veuillez entrer au moins 2 caractères';
-    failureIcon[1].style.opacity = "1";
-    isFormValid = false;
-  } else {
-    errorMsg[1].innerHTML = '';
-    failureIcon[1].style.opacity = "0";
-    successIcon[1].style.opacity = "1";
-    isFormValid = true;
-  }
-  
-  // Validate email name
-  if(email.value.trim() === ''){
-    errorMsg[2].innerHTML = 'Vous devez entrer une address mail';
-    failureIcon[2].style.opacity = "1";
-    isFormValid = false;
-  } else {
-    errorMsg[2].innerHTML = '';
-    failureIcon[2].style.opacity = "0";
-    successIcon[2].style.opacity = "1";
-    isFormValid = true;
-  }
-
-  // Validate birthday
-  if(birthdate.value === ''){
-    errorMsg[3].innerHTML = 'Vous devez entrer une date de naissance';
-    isFormValid = false;
-  } else {
-    errorMsg[3].innerHTML = '';
-    successIcon[3].style.opacity = "1";
-    isFormValid = true;
-  }
-
-  // Validate quantity
-  if(quantity.value === ''){
-    errorMsg[4].innerHTML = 'Ce champ ne peut pas être vide';
-    failureIcon[4].style.opacity = "1";
-    isFormValid = false;
-  } else {
-    errorMsg[4].innerHTML = '';
-    successIcon[4].style.opacity = "1";
-    isFormValid = true;
-  }
-
-  // Validate location
-  for (i=0; i<city.length; i++) {
-    if(city[i].checked==true){
-      errorMsg[5].innerHTML = '';
-      isFormValid = true;
-      break;
-    }
-    else {
-     errorMsg[5].innerHTML = "Vous devez choisir une option";
-     isFormValid = false
-    //  return false;
-    }
-  }
-
-  // Validate checkbox
-  if(checkbox1.checked) {
-    errorMsg[6].innerHTML = '';
-    isFormValid = true;
-  } else {
-    errorMsg[6].innerHTML = "Vous devez accepter les conditions d'utilisation";
-    isFormValid = false
-  }
-
 })
 
 
+// check first name
+function checkFirstName() {
+
+  let firstName = document.getElementById("first-name");
+
+  if(first.value.trim() === ''){
+    firstName.setAttribute('data-error-visible', 'true');
+    return false;
+  } else {
+    firstName.setAttribute('data-error-visible', 'false')
+    return true;
+  }
+}
+
+// check last name
+function checkLastName() {
+
+  let lastName = document.getElementById("last-name");
+
+  if(last.value.trim() === ''){
+    lastName.setAttribute('data-error-visible', 'true');
+    return false;
+  } else {
+    lastName.setAttribute('data-error-visible', 'false')
+    return true;
+  }
+}
+
+// check email 
+function checkEmail() {
+
+  let emailData = document.getElementById("emailData");
+
+   if(email.value.trim() === ''){
+    emailData.setAttribute('data-error-visible', 'true');
+    return false;
+  } else {
+    emailData.setAttribute('data-error-visible', 'false')
+    return true;
+  }
+}
+
+// check birthday
+function checkBirthdate() {
+
+  let birthdateData = document.getElementById("birthdateData");
+
+  if(birthdate.value === ''){
+    birthdateData.setAttribute('data-error-visible', 'true');
+    return false;
+  } else {
+    birthdateData.setAttribute('data-error-visible', 'false')
+    return true;
+  }
+}
+
+// check quantity
+function checkQuantity() {
+
+  let quantityData = document.getElementById("quantityData");
+  
+  if(quantity.value === ''){
+    quantityData.setAttribute('data-error-visible', 'true');
+    return false;
+  } else {
+    quantityData.setAttribute('data-error-visible', 'false')
+    return true;
+  }
+}
+
+// check location
+function checkLocation() {
+
+  let locationData = document.getElementById("locationData")
+
+  if (
+    location1.checked == false &&
+    location2.checked == false &&
+    location3.checked == false &&
+    location4.checked == false &&
+    location5.checked == false &&
+    location6.checked == false
+  ) {
+    locationData.setAttribute('data-error-visible', 'true');
+    return false;
+  } else {
+    locationData.setAttribute('data-error-visible', 'false')
+    return true;
+  }
+}
+
+// check checkbox
+function checkboxValidation() {
+
+  let checkbox1Data = document.getElementById("checkbox1Data");
+
+  if(checkbox1.checked == false) {
+    checkbox1Data.setAttribute('data-error-visible', 'true');
+    return false;
+  } else {
+    checkbox1Data.setAttribute('data-error-visible', 'false')
+    return true;
+  } 
+}

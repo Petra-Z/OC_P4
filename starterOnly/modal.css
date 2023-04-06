@@ -211,26 +211,7 @@ input {
 .formData {
   position: relative;
 }
-.failure-icon {
-  color: red;
-  position: absolute;
-  right: 10px;
-  bottom: 40px;
-  opacity: 0;
-}
-.success-icon {
-  color: green;
-  position: absolute;
-  right: 10px;
-  bottom: 12px;
-  opacity: 0;
-}
-.error {
-  color: red;
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin: 5px;
-}
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -250,11 +231,11 @@ input {
   border: 2px solid #e54858;
 } 
 
-/* input[data-error]::after {
+input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
-} */
+}
 .checkbox-label,
 .checkbox2-label {
   position: relative;
