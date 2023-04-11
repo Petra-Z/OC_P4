@@ -10,7 +10,7 @@ function editNav() {
 // DOM Elements - form
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+// const formData = document.querySelectorAll(".formData");
 const modalCloseBtn = document.querySelector(".close");
 const form = document.getElementById("form");
 
@@ -40,7 +40,7 @@ window.addEventListener("click", (e) => {
   if(e.target === modalbg){
     modalbg.style.display = "none";
   }
-})
+});
 
 // close success event
 successPopupClose.addEventListener("click", closeSuccess);
@@ -57,7 +57,7 @@ const last = document.getElementById("last");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const checkbox1 = document.getElementById("checkbox1");
-const quantity = document.getElementById("quantity")
+const quantity = document.getElementById("quantity");
 
 
 // eveny submit form
@@ -76,7 +76,7 @@ form.addEventListener("submit", (e) => {
     modalbg.remove();
     successMsg.style.display = 'block';
   }
-})
+});
 
 
 // check first name
@@ -88,7 +88,7 @@ function checkFirstName() {
     firstName.setAttribute('data-error-visible', 'true');
     return false;
   } else {
-    firstName.setAttribute('data-error-visible', 'false')
+    firstName.setAttribute('data-error-visible', 'false');
     return true;
   }
 }
@@ -102,7 +102,7 @@ function checkLastName() {
     lastName.setAttribute('data-error-visible', 'true');
     return false;
   } else {
-    lastName.setAttribute('data-error-visible', 'false')
+    lastName.setAttribute('data-error-visible', 'false');
     return true;
   }
 }
@@ -112,11 +112,13 @@ function checkEmail() {
 
   let emailData = document.getElementById("emailData");
 
-   if(email.value.trim() === ''){
+   if(email.value.trim() === '' ||
+   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value) == false){
     emailData.setAttribute('data-error-visible', 'true');
     return false;
-  } else {
-    emailData.setAttribute('data-error-visible', 'false')
+   }
+  else {
+    emailData.setAttribute('data-error-visible', 'false');
     return true;
   }
 }
@@ -130,7 +132,7 @@ function checkBirthdate() {
     birthdateData.setAttribute('data-error-visible', 'true');
     return false;
   } else {
-    birthdateData.setAttribute('data-error-visible', 'false')
+    birthdateData.setAttribute('data-error-visible', 'false');
     return true;
   }
 }
@@ -144,7 +146,7 @@ function checkQuantity() {
     quantityData.setAttribute('data-error-visible', 'true');
     return false;
   } else {
-    quantityData.setAttribute('data-error-visible', 'false')
+    quantityData.setAttribute('data-error-visible', 'false');
     return true;
   }
 }
@@ -152,7 +154,7 @@ function checkQuantity() {
 // check location
 function checkLocation() {
 
-  let locationData = document.getElementById("locationData")
+  let locationData = document.getElementById("locationData");
 
   if (
     location1.checked == false &&
@@ -165,7 +167,7 @@ function checkLocation() {
     locationData.setAttribute('data-error-visible', 'true');
     return false;
   } else {
-    locationData.setAttribute('data-error-visible', 'false')
+    locationData.setAttribute('data-error-visible', 'false');
     return true;
   }
 }
@@ -179,7 +181,8 @@ function checkboxValidation() {
     checkbox1Data.setAttribute('data-error-visible', 'true');
     return false;
   } else {
-    checkbox1Data.setAttribute('data-error-visible', 'false')
+    checkbox1Data.setAttribute('data-error-visible', 'false');
     return true;
   } 
 }
+
