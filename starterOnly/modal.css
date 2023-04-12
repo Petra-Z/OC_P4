@@ -8,6 +8,7 @@
   margin: 0;
   padding: 0;
 }
+
 /* Landing Page */
 
 body {
@@ -91,8 +92,6 @@ img {
   }
 }
 
-
-
  @media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
@@ -112,8 +111,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -170,7 +167,7 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
-.content {
+.content{
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
@@ -356,29 +353,43 @@ input[data-error]::after {
 }
 
 #success-popup {
-  width: 70%;
-  height: 400px;
-  background-image: radial-gradient(rgba(56, 118, 172, 1), rgba(145, 152, 229, 1));
+  margin: 10% auto;
+  width: 100%;
+  max-width: 500px;
+  height: 75%;
+  background: #232323;
+  color: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.3);
-  position: absolute;
-  left: 15%;
-  top: 30%;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
   text-align: center;
   display: none;
   z-index: 999;
-  margin: auto;
 }
 
 #success-popup p {
-  color: white;
-  margin: 0;
   position: absolute;
   top: 50%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   font-size: 2rem;
+}
+
+.btn-fermer {
+  width: 140px;
+  height: 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  position: absolute;
+  left: 50%;
+  margin-left: -70px;
+  bottom: 25px;
+  text-align: center;
+  padding: 0;
+
 }
 
 /* custom select styles */
@@ -447,6 +458,7 @@ input[data-error]::after {
 .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
 /* custom select end */
 .text-label {
   font-weight: normal;

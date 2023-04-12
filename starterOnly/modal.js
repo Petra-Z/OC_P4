@@ -10,14 +10,13 @@ function editNav() {
 // DOM Elements - form
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-// const formData = document.querySelectorAll(".formData");
 const modalCloseBtn = document.querySelector(".close");
 const form = document.getElementById("form");
+const content = document.querySelector(".content")
 
 // DOM Elements - validation message
 const successMsg = document.getElementById("success-popup");
-const successPopupClose = document.querySelector(".close-success");
-
+const successPopupClose = document.querySelector(".btn-fermer");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -48,6 +47,7 @@ successPopupClose.addEventListener("click", closeSuccess);
 // close success message popup
 function closeSuccess() {
   successMsg.style.display = "none";
+  modalbg.style.display = "none";
 }
 
 
@@ -73,7 +73,7 @@ form.addEventListener("submit", (e) => {
   if(
   checkFirstName() && checkLastName() && checkEmail() && checkBirthdate() && checkQuantity() && checkLocation() && checkboxValidation()
   ) {
-    modalbg.remove();
+    content.remove();
     successMsg.style.display = 'block';
   }
 });
