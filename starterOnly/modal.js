@@ -44,10 +44,11 @@ window.addEventListener("click", (e) => {
 // close success event
 successPopupClose.addEventListener("click", closeSuccess);
 
-// close success message popup
+// close success message popup and refresh the page 
 function closeSuccess() {
   successMsg.style.display = "none";
   modalbg.style.display = "none";
+  window.location.reload();
 }
 
 
@@ -111,9 +112,9 @@ function checkLastName() {
 function checkEmail() {
 
   let emailData = document.getElementById("emailData");
+  let rgxEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ;
 
-   if(email.value.trim() === '' ||
-   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value) == false){
+   if(email.value.trim() === '' || rgxEmail.test(email.value) == false){
     emailData.setAttribute('data-error-visible', 'true');
     return false;
    }
