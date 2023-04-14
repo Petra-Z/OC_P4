@@ -52,7 +52,7 @@ function closeSuccess() {
 }
 
 
-// all the input form elements
+// DOM Elements - all the input form elements
 const first = document.getElementById("first");
 const last = document.getElementById("last");
 const email = document.getElementById("email");
