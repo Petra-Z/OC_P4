@@ -52,7 +52,7 @@ function closeSuccess() {
 }
 
 
-// all the form elements
+// all the input form elements
 const first = document.getElementById("first");
 const last = document.getElementById("last");
 const email = document.getElementById("email");
@@ -61,7 +61,7 @@ const checkbox1 = document.getElementById("checkbox1");
 const quantity = document.getElementById("quantity");
 
 
-// eveny submit form
+// event submit form
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   checkFirstName();
