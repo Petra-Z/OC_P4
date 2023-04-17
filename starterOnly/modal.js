@@ -13,6 +13,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const modalCloseBtn = document.querySelector(".close");
 const form = document.getElementById("form");
 const content = document.querySelector(".content")
+const modalBody = document.querySelector(".modal-body")
 
 // DOM Elements - validation message
 const successMsg = document.getElementById("success-popup");
@@ -47,10 +48,10 @@ successPopupClose.addEventListener("click", closeSuccess);
 // close success message popup and refresh the page 
 function closeSuccess() {
   successMsg.style.display = "none";
-  modalbg.style.display = "none";
-  window.location.reload();
+  form.style.display = "block";
+  closeModal();
+  form.reset();
 }
-
 
 // DOM Elements - all the input form elements
 const first = document.getElementById("first");
@@ -74,7 +75,7 @@ form.addEventListener("submit", (e) => {
   if(
   checkFirstName() && checkLastName() && checkEmail() && checkBirthdate() && checkQuantity() && checkLocation() && checkboxValidation()
   ) {
-    content.remove();
+    form.style.display = "none";
     successMsg.style.display = 'block';
   }
 });
@@ -85,7 +86,7 @@ function checkFirstName() {
 
   let firstName = document.getElementById("first-name");
 
-  if(first.value.trim() === ''){
+  if(first.value.trim() === '' || first.value.trim().length < 2 ){
     firstName.setAttribute('data-error-visible', 'true');
     return false;
   } else {
@@ -99,7 +100,7 @@ function checkLastName() {
 
   let lastName = document.getElementById("last-name");
 
-  if(last.value.trim() === ''){
+  if(last.value.trim() === '' || last.value.trim().length <2){
     lastName.setAttribute('data-error-visible', 'true');
     return false;
   } else {

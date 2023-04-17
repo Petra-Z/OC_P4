@@ -300,7 +300,7 @@ input {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  text-align: left;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -599,19 +599,17 @@ footer {
   margin-top: 0px;
   transition: 0.3s;
   position: absolute;
-  right: 0;
-  top: 37px;
+  left: 0;
+  top: 38px;
 }
 
 #success-popup {
-  margin: 10% auto;
-  width: 95%;
+  width: 100%;
   max-width: 500px;
   height: 75%;
   background: #232323;
   color: #fff;
   border-radius: 10px;
-  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.3);
   position: fixed;
   left: 50%;
   transform: translate(-50%, 0);
@@ -622,7 +620,7 @@ footer {
 
 #success-popup p {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
@@ -637,7 +635,7 @@ footer {
   position: absolute;
   left: 50%;
   margin-left: -70px;
-  bottom: 25px;
+  bottom: 35px;
   text-align: center;
   padding: 0;
 }
